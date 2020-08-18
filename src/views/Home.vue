@@ -1,44 +1,22 @@
 <template>
-  <div class="container-fluid margins">
+  <div id="container">
     <div class="row">
       <div class="col-10">
+        <stock-quote v-if="stock" v-bind:stock="stock"></stock-quote>
+        <div class="alert alert-danger" role="alert" v-if="error">
+          <strong>Error!</strong> {{this.error}}
+        </div>
+      </div>
+      <div class="button-area">
         <input type="text"
                autofocus placeholder="Enter symbol..." v-model="symbol" v-on:keyup.enter="search"/>
+        <span>
+          <input class="go-button" type="button" value="Go" v-on:click="search" />
+        </span>
       </div>
-      <div class="col-2">
-        <input type="button" value="Go" v-on:click="search" />
-      </div>
-    </div>
-
-    <stock-quote v-bind:stock="stock"></stock-quote>
-    <div class="alert alert-danger" role="alert" v-if="error">
-      <strong>Error!</strong> {{this.error}}
     </div>
   </div>
 </template>
-
-<!--<template>-->
-<!--  <div id="app">-->
-<!--    <div id="header">-->
-<!--      <h1>Header</h1>-->
-<!--      <span class="green-items">${{ currentPrice }} / {{ percentage }}%</span>-->
-<!--    </div>-->
-
-<!--    <ul class="items" v-for="item in items" :key="item">-->
-<!--      <li>-->
-<!--        <span>{{ item.name }}</span>-->
-<!--        <span class="price">{{ item.price }}</span>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--    <div>-->
-<!--      <input type="text"-->
-<!--      placeholder="Enter symbol "-->
-<!--      v-model="symbol"-->
-<!--      >-->
-<!--      <button>Search</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
 
 <script>
 // @ is an alias to /src
@@ -51,22 +29,6 @@ export default {
       error: '',
       symbol: ''
     }
-    // return {
-    //   items: [
-    //     {
-    //       name: 'name 1',
-    //       price: 20.00,
-    //       currentPrice: 3.99,
-    //       percentage: 2.5
-    //     },
-    //     {
-    //       name: 'name 2',
-    //       price: 30.00,
-    //       currentPrice: 3.99,
-    //       percentage: 6.5
-    //     }
-    //   ]
-    // }
   },
   components: {
     'stock-quote': StockQuote
@@ -79,6 +41,7 @@ export default {
     search () {
       const axios = require('axios')
 
+      this.init()
       axios({
         method: 'GET',
         url: 'https://investors-exchange-iex-trading.p.rapidapi.com/stock/' + this.symbol + '/book',
@@ -101,7 +64,6 @@ export default {
       } else {
         this.stock = ''
         this.error = ' There was an error retrieving the data. Please try again.'
-        console.log(err.response)
       }
     }
   }
@@ -131,19 +93,16 @@ li {
   font-size: 1.5em;
 }
 
-.price {
-  margin-left: auto;
+#container {
+  width: 50%;
+  margin: 0 auto;
 }
 
-#header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+input {
+  margin: 10px 30px;
 }
 
-.green-items {
-  font-size: 2em;
-  color: green;
+.go-button {
+  width: 100px;
 }
 </style>
