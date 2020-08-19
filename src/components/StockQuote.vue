@@ -90,7 +90,7 @@ export default {
 }
 
 .left {
-  font-weight: light;
+  font-weight: 400;
 }
 
 .right {
@@ -99,7 +99,7 @@ export default {
 }
 
 .time {
-  font-weight: light;
+  font-weight: 400;
 }
 
 .header {

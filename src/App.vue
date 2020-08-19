@@ -44,12 +44,19 @@ export default {
       const axios = require('axios')
 
       this.init()
-      var url = `https://sandbox.iexapis.com/stable/stock/${this.symbol}/quote?token=Tpk_186b74daec6147939cdcd9bf6638450e`
-
-      axios.get(url)
+      axios({
+        method: 'GET',
+        url: 'https://investors-exchange-iex-trading.p.rapidapi.com/stock/' + this.symbol + '/book',
+        headers: {
+          'content-type': 'application/octet-stream',
+          'x-rapidapi-host': 'investors-exchange-iex-trading.p.rapidapi.com',
+          'x-rapidapi-key': '6c9880c44emsh99301f9d46cb5ebp11fbebjsn7fcfd3f93a9e',
+          useQueryString: true
+        }
+      })
         .then((response) => {
-          this.stock = response.data
-          console.log(response.data)
+          this.stock = response.data.quote
+          console.log(response.data.quote)
         })
         .catch(this.handleErrors)
     },
