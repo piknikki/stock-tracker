@@ -26,7 +26,7 @@
       </div>
       <div class="flex-row bottom">
 
-        <span class="right time">As of {{stock.latestTime | formatTime}}</span>
+        <span class="right time" >As of {{ stock.latestUpdate | moment('h:mm:ss A')}}</span>
       </div>
     </div>
   </div>
@@ -46,6 +46,9 @@ export default {
         return 'color: black'
       }
     }
+    // formatTime () {
+    //   return moment(this.stock.latestTime).format('LTS')
+    // }
   }
 }
 </script>

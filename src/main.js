@@ -16,10 +16,8 @@ Vue.filter('formatSmallNumber', function (value) {
 Vue.filter('formatPercent', function (value) {
   return numeral(value).format('0.00 %')
 })
-// 00:00:00
-Vue.filter('formatTime', function (value) {
-  return numeral(value).format('00:00:00').toUpperCase()
-})
+
+Vue.use(require('vue-moment'))
 
 new Vue({
   store,

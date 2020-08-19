@@ -56,7 +56,7 @@ export default {
       })
         .then((response) => {
           this.stock = response.data.quote
-          // console.log(response.data.quote)
+          console.log(response.data.quote)
         })
         .catch(this.handleErrors)
       this.clear()
