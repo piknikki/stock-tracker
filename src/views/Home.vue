@@ -1,6 +1,7 @@
 <template>
   <div id="container">
     <div class="row">
+      <hr>
       <div class="col-10">
         <stock-quote v-if="stock" v-bind:stock="stock"></stock-quote>
         <div class="alert alert-danger" role="alert" v-if="error">
@@ -72,6 +73,10 @@ export default {
 </script>
 
 <style>
+hr {
+  border-top: 2px solid gray;
+}
+
 input, button {
   padding: 0.2em;
   margin: 0.1em 0.2em;
@@ -82,12 +87,14 @@ input, button {
 }
 
 #container {
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
 }
 
 .buttons {
-  width: 45%;
+  width: 40%;
   margin: 10px;
+  padding: 10px;
+  font-size: 1em;
 }
 </style>

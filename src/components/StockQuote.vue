@@ -55,6 +55,7 @@ export default {
 <style scoped>
 #company-name {
   width: 40%;
+  text-align: left;
 }
 
 #company-name, .header {
@@ -80,6 +81,7 @@ export default {
 
 .right {
   margin-left: auto;
+  font-weight: bold;
 }
 
 .header {
