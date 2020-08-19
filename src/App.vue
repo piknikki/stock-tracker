@@ -11,7 +11,7 @@
       <div class="button-area">
         <input type="text" class="buttons"
                autofocus v-model="symbol" v-on:keyup.enter="search"/>
-          <input class="buttons" type="button" value="Get New Quote" v-on:click="search" />
+          <input class="buttons quote-button" type="button" value="Get New Quote" v-on:click="search" />
       </div>
     </div>
   </div>
@@ -101,10 +101,20 @@ input, button {
   margin: 100px auto;
 }
 
+.button-area {
+  text-align: center;
+}
+
 .buttons {
-  width: 40%;
-  margin: 10px;
+  width: 44%;
+  margin-top: 10px;
   padding: 10px;
   font-size: 1em;
+}
+
+input.quote-button {
+  background-image: linear-gradient(white, lightgrey);
+  border-radius: 2px;
+  border: 1px solid grey;
 }
 </style>
