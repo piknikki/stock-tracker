@@ -83,29 +83,6 @@ export default {
   background:#eee;
 }
 
-.logo {
-  width: 20px;
-  padding-right: 10px;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #2c3e50;
-    text-decoration: none;
-    justify-content: center;
-    margin: 20px;
-
-    &.router-link-exact-active {
-      color: #14A9BF;
-
-    }
-  }
-}
-
 hr {
   border-top: 2px solid gray;
 }

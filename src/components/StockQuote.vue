@@ -24,7 +24,7 @@
         <span class="left">Market Cap</span>
         <span class="right">{{stock.marketCap | formatBigNumber}}</span>
       </div>
-      <div class="flex-row bottom">
+      <div class="flex-row bottom time">
 
         <span class="right time" >As of {{ stock.latestUpdate | moment('h:mm:ss A')}}</span>
       </div>
@@ -57,7 +57,7 @@ export default {
 #company-name {
   width: 40%;
   text-align: left;
-  margin-left: 20px;
+  margin-left: 2px;
   letter-spacing: 0.1em;
 }
 
@@ -70,6 +70,7 @@ export default {
 }
 
 #stock-card {
+  font-size: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -78,8 +79,8 @@ export default {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid gray;
-  padding: 20px;
-  font-size: 1em;
+  padding: 10px 10px;
+  font-size: 20px;
 }
 
 .bottom {
@@ -95,12 +96,16 @@ export default {
   font-weight: bold;
 }
 
-.time {
+.flex-row.bottom.time {
+  padding-right: 2px;
+}
+
+.right.time {
   font-weight: 400;
 }
 
 .header {
-  font-size: 2em;
+  font-size: 32px;
   font-weight: bold;
 }
 
