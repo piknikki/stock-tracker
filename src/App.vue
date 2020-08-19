@@ -10,11 +10,8 @@
       </div>
       <div class="button-area">
         <input type="text" class="buttons"
-               autofocus placeholder="Enter symbol..." v-model="symbol" v-on:keyup.enter="search"/>
-        <span>
+               autofocus v-model="symbol" v-on:keyup.enter="search"/>
           <input class="buttons" type="button" value="Get New Quote" v-on:click="search" />
-
-        </span>
       </div>
     </div>
   </div>
@@ -40,6 +37,9 @@ export default {
       this.stock = {}
       this.error = ''
     },
+    clear () {
+      this.symbol = ''
+    },
     search () {
       const axios = require('axios')
 
@@ -56,9 +56,10 @@ export default {
       })
         .then((response) => {
           this.stock = response.data.quote
-          console.log(response.data.quote)
+          // console.log(response.data.quote)
         })
         .catch(this.handleErrors)
+      this.clear()
     },
     handleErrors (err) {
       if (err.status === 404) {
@@ -79,6 +80,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background:#eee;
 }
 
 .logo {

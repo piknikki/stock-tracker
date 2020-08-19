@@ -6,7 +6,7 @@
       </div>
       <div class="flex-row">
         <span class="left header">{{ stock.latestPrice }}</span>
-        <span class="right header" :style="style">{{stock.change}} ({{stock.changePercent}}%)</span>
+        <span class="right header" :style="style">{{stock.ytdChange | formatSmallNumber}} ( {{stock.iexMarketPercent | formatPercent}})</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Range</span>
@@ -18,35 +18,29 @@
       </div>
       <div class="flex-row bottom">
         <span class="left">Volume</span>
-        <span v-bind:formatNumber="formatNumber" class="right">{{stock.latestVolume}}</span>
+        <span class="right">{{stock.avgTotalVolume | formatBigNumber}}</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Market Cap</span>
-        <span class="right">{{stock.marketCap}}</span>
+        <span class="right">{{stock.marketCap | formatBigNumber}}</span>
       </div>
       <div class="flex-row bottom">
 
-        <span class="right time">As of {{stock.latestTime}}</span>
+        <span class="right time">As of {{stock.latestTime | formatTime}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-var numeral = require('numeral')
 
 export default {
   props: ['stock', 'color'],
-  methods: {
-    formatNumber (value) {
-      return numeral(value).format('0.0a')
-    }
-  },
   computed: {
     style () {
-      if (this.stock.change > 0) {
+      if (this.stock.ytdChange > 0) {
         return 'color: green'
-      } else if (this.stock.change < 0) {
+      } else if (this.stock.ytdChange < 0) {
         return 'color: red'
       } else {
         return 'color: black'
