@@ -1,4 +1,10 @@
-# stock-tracker
+# Stock Grabber
+Stock Grabber is an app that grabs a few bits and bobs of stock information for the stock symbol you input
+
+Feel free to clone or fork this repo and make it your own (follow the instructions below)!
+
+[Live Link](https://stock-quoter-42.herokuapp.com/)
+
 
 ## Project setup
 ```
