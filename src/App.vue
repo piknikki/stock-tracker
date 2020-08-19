@@ -44,19 +44,12 @@ export default {
       const axios = require('axios')
 
       this.init()
-      axios({
-        method: 'GET',
-        url: 'https://investors-exchange-iex-trading.p.rapidapi.com/stock/' + this.symbol + '/book',
-        headers: {
-          'content-type': 'application/octet-stream',
-          'x-rapidapi-host': 'investors-exchange-iex-trading.p.rapidapi.com',
-          'x-rapidapi-key': '6c9880c44emsh99301f9d46cb5ebp11fbebjsn7fcfd3f93a9e',
-          useQueryString: true
-        }
-      })
+      var url = `https://sandbox.iexapis.com/stable/stock/${this.symbol}/quote?token=Tpk_186b74daec6147939cdcd9bf6638450e`
+
+      axios.get(url)
         .then((response) => {
-          this.stock = response.data.quote
-          console.log(response.data.quote)
+          this.stock = response.data
+          console.log(response.data)
         })
         .catch(this.handleErrors)
     },
@@ -72,36 +65,9 @@ export default {
 }
 </script>
 
-<style>
-hr {
-  border-top: 2px solid gray;
-}
-
-input, button {
-  padding: 0.2em;
-  margin: 0.1em 0.2em;
-  box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  font-family: 'Cabin', sans-serif;
-}
-
-#container {
-  width: 40%;
-  margin: 100px auto;
-}
-
-.buttons {
-  width: 40%;
-  margin: 10px;
-  padding: 10px;
-  font-size: 1em;
-}
-</style>
-
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -129,5 +95,30 @@ input, button {
 
     }
   }
+}
+
+hr {
+  border-top: 2px solid gray;
+}
+
+input, button {
+  padding: 0.2em;
+  margin: 0.1em 0.2em;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  font-family: 'Cabin', sans-serif;
+}
+
+#container {
+  width: 40%;
+  margin: 100px auto;
+}
+
+.buttons {
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1em;
 }
 </style>

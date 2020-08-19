@@ -1,30 +1,32 @@
 <template>
   <div>
-    <h1 id="company-name">{{ stock.companyName }}</h1>
     <div id="stock-card" class="quote" v-if="stock.symbol">
+      <div>
+        <h1 id="company-name">{{ stock.companyName }}</h1>
+      </div>
       <div class="flex-row">
         <span class="left header">{{ stock.latestPrice }}</span>
         <span class="right header" :style="style">{{stock.change}} ({{stock.changePercent}}%)</span>
       </div>
-      <div class="flex-row">
+      <div class="flex-row bottom">
         <span class="left">Range</span>
         <span class="right">{{stock.low}} - {{stock.high}}</span>
       </div>
-      <div class="flex-row">
+      <div class="flex-row bottom">
         <span class="left">Open</span>
         <span class="right">{{stock.open}}</span>
       </div>
-      <div class="flex-row">
+      <div class="flex-row bottom">
         <span class="left">Volume</span>
         <span v-bind:formatNumber="formatNumber" class="right">{{stock.latestVolume}}</span>
       </div>
-      <div class="flex-row">
+      <div class="flex-row bottom">
         <span class="left">Market Cap</span>
         <span class="right">{{stock.marketCap}}</span>
       </div>
-      <div class="flex-row">
+      <div class="flex-row bottom">
 
-        <span class="right">As of {{stock.latestTime}}</span>
+        <span class="right time">As of {{stock.latestTime}}</span>
       </div>
     </div>
   </div>
@@ -43,9 +45,11 @@ export default {
   computed: {
     style () {
       if (this.stock.change > 0) {
+        return 'color: green'
+      } else if (this.stock.change < 0) {
         return 'color: red'
       } else {
-        return 'color: green'
+        return 'color: black'
       }
     }
   }
@@ -56,6 +60,8 @@ export default {
 #company-name {
   width: 40%;
   text-align: left;
+  margin-left: 20px;
+  letter-spacing: 0.1em;
 }
 
 #company-name, .header {
@@ -79,9 +85,21 @@ export default {
   font-size: 1em;
 }
 
+.bottom {
+  font-family: 'Roboto', sans-serif;
+}
+
+.left {
+  font-weight: light;
+}
+
 .right {
   margin-left: auto;
   font-weight: bold;
+}
+
+.time {
+  font-weight: light;
 }
 
 .header {
