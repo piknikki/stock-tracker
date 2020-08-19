@@ -8,7 +8,7 @@
       </div>
       <div class="flex-row">
         <span class="left">Range</span>
-        <span class="right">{{stock.companyName}}</span>
+        <span class="right">{{stock.low}} - {{stock.high}}</span>
       </div>
       <div class="flex-row">
         <span class="left">Open</span>
@@ -54,9 +54,17 @@ export default {
 
 <style scoped>
 #company-name {
+  width: 40%;
+}
+
+#company-name, .header {
+  text-transform: uppercase;
   display: flex;
   justify-items: left;
+  flex-wrap: wrap;
+  font-family: 'Lora', serif;
 }
+
 #stock-card {
   display: flex;
   flex-direction: column;

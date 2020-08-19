@@ -8,10 +8,11 @@
         </div>
       </div>
       <div class="button-area">
-        <input type="text"
+        <input type="text" class="buttons"
                autofocus placeholder="Enter symbol..." v-model="symbol" v-on:keyup.enter="search"/>
         <span>
-          <input class="go-button" type="button" value="Go" v-on:click="search" />
+          <input class="buttons" type="button" value="Get New Quote" v-on:click="search" />
+
         </span>
       </div>
     </div>
@@ -71,26 +72,13 @@ export default {
 </script>
 
 <style>
-ul, li {
-  list-style-type: none;
-  list-style-position:inside;
-  margin:0;
-  padding:0;
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
-}
-
-li {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border-bottom: 1px solid black;
-  margin-bottom: 10px;
-  padding: 20px;
-  font-size: 1.5em;
+input, button {
+  padding: 0.2em;
+  margin: 0.1em 0.2em;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  font-family: 'Cabin', sans-serif;
 }
 
 #container {
@@ -98,11 +86,8 @@ li {
   margin: 0 auto;
 }
 
-input {
-  margin: 10px 30px;
-}
-
-.go-button {
-  width: 100px;
+.buttons {
+  width: 45%;
+  margin: 10px;
 }
 </style>
