@@ -84,7 +84,7 @@ export default {
 }
 
 hr {
-  border-top: 2px solid gray;
+  border-top: 4px solid gray;
 }
 
 input, button {
