@@ -2,23 +2,23 @@
   <div>
     <div id="stock-card" class="quote" v-if="stock.symbol">
       <div>
-        <h1 id="company-name">{{ stock.companyName }}</h1>
+        <h1 id="company-name">{{ stock.longName }}</h1>
       </div>
       <div class="flex-row">
-        <span class="left header">{{ stock.latestPrice }}</span>
-        <span class="right header" :style="style">{{stock.ytdChange | formatSmallNumber}} ( {{stock.iexMarketPercent | formatPercent}})</span>
+        <span class="left header">{{ stock.regularMarketPrice }}</span>
+        <span class="right header" :style="style">{{stock.regularMarketChange | formatSmallNumber}} ( {{stock.regularMarketChangePercent | formatPercent}})</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Range</span>
-        <span class="right">{{stock.low}} - {{stock.high}}</span>
+        <span class="right">{{stock.regularMarketDayLow}} - {{stock.regularMarketDayHigh}}</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Open</span>
-        <span class="right">{{stock.open  | formatSmallNumber}}</span>
+        <span class="right">{{stock.regularMarketOpen  | formatSmallNumber}}</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Volume</span>
-        <span class="right">{{stock.avgTotalVolume | formatBigNumber}}</span>
+        <span class="right">{{stock.regularMarketVolume | formatBigNumber}}</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Market Cap</span>
@@ -26,7 +26,7 @@
       </div>
       <div class="flex-row bottom time">
 
-        <span class="right time" >As of {{ stock.latestUpdate | moment('h:mm:ss A')}}</span>
+        <span class="right time" >As of {{ stock.regularMarketTime | moment('h:mm:ss A')}}</span>
       </div>
     </div>
   </div>
@@ -38,9 +38,9 @@ export default {
   props: ['stock', 'color'],
   computed: {
     style () {
-      if (this.stock.ytdChange > 0) {
+      if (this.stock.regularMarketChange > 0) {
         return 'color: green'
-      } else if (this.stock.ytdChange < 0) {
+      } else if (this.stock.regularMarketChange < 0) {
         return 'color: red'
       } else {
         return 'color: black'
