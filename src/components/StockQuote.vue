@@ -14,7 +14,7 @@
       </div>
       <div class="flex-row bottom">
         <span class="left">Open</span>
-        <span class="right">{{stock.open}}</span>
+        <span class="right">{{stock.open  | formatSmallNumber}}</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Volume</span>
