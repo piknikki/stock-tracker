@@ -44,16 +44,6 @@ export default {
       const axios = require('axios')
 
       this.init()
-      // axios({
-      //   method: 'GET',
-      //   url: 'https://investors-exchange-iex-trading.p.rapidapi.com/stock/' + this.symbol + '/book',
-      //   headers: {
-      //     'content-type': 'application/octet-stream',
-      //     'x-rapidapi-host': 'investors-exchange-iex-trading.p.rapidapi.com',
-      //     'x-rapidapi-key': '6c9880c44emsh99301f9d46cb5ebp11fbebjsn7fcfd3f93a9e',
-      //     useQueryString: true
-      //   }
-      // })
       axios({
         method: 'GET',
         url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-quotes',
@@ -70,16 +60,21 @@ export default {
         }
       })
         .then((response) => {
-          // this.stock = response.data.quote
-          // console.log(response.data.quote)
-          this.stock = response.data.quoteResponse.result[0]
-          console.log(response.data.quoteResponse.result[0])
+          if (response.data.quoteResponse.result[0].longName === undefined) {
+            this.handleErrors(404)
+          } else {
+            this.stock = response.data.quoteResponse.result[0]
+          }
+          console.log(response.data.quoteResponse.result[0].longName)
         })
-        .catch(this.handleErrors)
+        .catch((error) => {
+          console.log(error)
+        })
       this.clear()
     },
-    handleErrors (err) {
-      if (err.status === 404) {
+    handleErrors (error) {
+      if (error.status === 404) {
+        console.log(error)
         this.error = ' That symbol could not be found. Please use another.'
       } else {
         this.stock = ''
