@@ -46,9 +46,6 @@ export default {
         return 'color: black'
       }
     }
-    // formatTime () {
-    //   return moment(this.stock.latestTime).format('LTS')
-    // }
   }
 }
 </script>
@@ -58,7 +55,7 @@ export default {
   width: 40%;
   text-align: left;
   margin-left: 2px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 #company-name, .header {
