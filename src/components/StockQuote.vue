@@ -6,7 +6,7 @@
       </div>
       <div class="flex-row">
         <span class="left header">{{ stock.regularMarketPrice }}</span>
-        <span class="right header" :style="style">{{stock.regularMarketChange | formatSmallNumber}} ( {{stock.regularMarketChangePercent | formatPercent}})</span>
+        <span class="right header" :style="style">{{stock.regularMarketChange | formatSmallNumber}} ( {{stock.regularMarketChangePercent | formatPercent}}%)</span>
       </div>
       <div class="flex-row bottom">
         <span class="left">Range</span>

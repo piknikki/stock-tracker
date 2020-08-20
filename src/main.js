@@ -13,7 +13,7 @@ Vue.filter('formatSmallNumber', function (value) {
 })
 
 Vue.filter('formatPercent', function (value) {
-  return numeral(value).format('0.00 %')
+  return numeral(value).format('0.00')
 })
 
 Vue.use(require('vue-moment'))
